@@ -57,9 +57,7 @@ int second_pointer_for_struct       = 0;
 char * NO_FUNCTION                  = "0";
 
 const int NO_VALUE                  = 0;         
-
 const char NO_SYMBOL                = '0';
-
 const char * VOID_BOX               = "           ";
 
 /*<><><><><><><><><><><><><><><><><> TREE FLAGS <><><><><><><><><><><><><><><><><><><>*/

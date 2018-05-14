@@ -1,44 +1,34 @@
 
-//____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-#define non_expression_command(COMMAND_STR, FUNCTION)						    		\
-																						\
-else if (strncmp(COMMAND_STR, input + pointer_for_input, strlen(COMMAND_STR)) == ZERO)	\
-{																						\
-	FUNCTION;																			\
-																						\
+#define non_expression_command(COMMAND_STR, FUNCTION)	\
+																											\
+else if (strncmp(COMMAND_STR, 												\
+								 input + pointer_for_input,						\
+								 strlen(COMMAND_STR)) == ZERO) {			\
+	FUNCTION;																						\
+	return;																							\
+}																											\
+
+#define number_command(NUMBER_STR, NUMBER) 			\
+																								\
+else if (strncmp(NUMBER_STR, 										\
+								input + pointer_for_input, 			\
+								strlen(NUMBER_STR)) == ZERO) {	\
+	Counter += NUMBER;														\
+	pointer_for_input += strlen(NUMBER_STR);     	\
+	command_identify();														\
 	return;																				\
+} 																							\
+
+#define operation_command(COMMAND_STR, FUNCTION) 	\
+																									\
+else if (strncmp(COMMAND_STR, 										\
+								 input + pointer_for_input, 			\
+							   strlen(COMMAND_STR)) == ZERO) {	\
+	pointer_for_input += strlen(COMMAND_STR) + ONE;	\
+	FUNCTION;																				\
+	return;																					\
 }
-
-//____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-#define number_command(NUMBER_STR, NUMBER) 												\
-																						\
-else if (strncmp(NUMBER_STR, input + pointer_for_input, strlen(NUMBER_STR)) == ZERO)	\
-{																						\
-	Counter += NUMBER;																	\
-																						\
-	pointer_for_input += strlen(NUMBER_STR);     										\
-																						\
-	command_identify();																	\
-																						\
-	return;																				\
-} 																						\
-
-//____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-#define operation_command(COMMAND_STR, FUNCTION) 										\
-																						\
-else if (strncmp(COMMAND_STR, input + pointer_for_input, strlen(COMMAND_STR)) == ZERO)	\
-{																						\
-	pointer_for_input += strlen(COMMAND_STR) + ONE;										\
-																						\
-	FUNCTION;																			\
-																						\
-	return;																				\
-}
-
-//____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 operation_command("derivate last"    , command_derivative("derivate last "    , "last"  , Counter))
 operation_command("derivate answer"  , command_derivative("derivate answer "  , "answer", Counter))
@@ -103,8 +93,6 @@ number_command("seventieth" , seventieth)
 number_command("eightieth"  ,  eightieth)
 number_command("nintieth"   ,  ninetieth)
 number_command("hundredth"  ,  hundredth)
-
-//____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 
 
