@@ -4,11 +4,11 @@
 
 #define BRACKET(Tree)                                                      \
   if (tree->info.flag == SYMBOL && tree->info.symbol == MULTIPLICATION     \
-     (Tree->info.flag == SYMBOL && Tree != NULL                            \
+     (Tree->info.flag == SYMBOL && Tree &&                                 \
      (Tree->info.symbol == PLUS || Tree->info.symbol == MINUS)))           \
     infix_print_B(Tree);                                                   \
   else if (tree->info.flag == SYMBOL && tree->info.symbol == DIVISION &&   \
-          (Tree->info.flag == SYMBOL && Tree != NULL &&                    \
+          (Tree->info.flag == SYMBOL && Tree &&                            \
           ((Tree->info.symbol == PLUS || Tree->info.symbol == MINUS) ||    \
     infix_print_B(Tree);                                                   \
           Tree->info.symbol  == MULTIPLICATION)))                          \

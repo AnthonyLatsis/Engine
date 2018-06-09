@@ -3,31 +3,29 @@
 #define non_expression_command(COMMAND_STR, FUNCTION)	\
 																											\
 else if (strncmp(COMMAND_STR, 												\
-								 input + pointer_for_input,						\
-								 strlen(COMMAND_STR)) == ZERO) {			\
+		             input + pointer_for_input,						\
+		             strlen(COMMAND_STR)) == ZERO) {			\
 	FUNCTION;																						\
 	return;																							\
 }																											\
 
-#define number_command(NUMBER_STR, NUMBER) 			\
-																								\
-else if (strncmp(NUMBER_STR, 										\
-								input + pointer_for_input, 			\
-								strlen(NUMBER_STR)) == ZERO) {	\
-	Counter += NUMBER;														\
-	pointer_for_input += strlen(NUMBER_STR);     	\
-	command_identify();														\
-	return;																				\
-} 																							\
+#define number_command(NUMBER_STR, NUMBER) 		     \
+else if (strncmp(NUMBER_STR,   					           \
+		 						 input + pointer_for_input, 			 \
+		 						 strlen(NUMBER_STR)) == ZERO) {	   \
+	Counter += NUMBER;				   			               \
+	pointer_for_input += strlen(NUMBER_STR);         \
+	command_identify();							                 \
+	return;						  				                     \
+} 												                         \
 
-#define operation_command(COMMAND_STR, FUNCTION) 	\
-																									\
-else if (strncmp(COMMAND_STR, 										\
-								 input + pointer_for_input, 			\
-							   strlen(COMMAND_STR)) == ZERO) {	\
-	pointer_for_input += strlen(COMMAND_STR) + ONE;	\
-	FUNCTION;																				\
-	return;																					\
+#define operation_command(COMMAND_STR, FUNCTION) 		\
+else if (strncmp(COMMAND_STR, 											\
+								 input + pointer_for_input,    	    \
+							   strlen(COMMAND_STR)) == ZERO) {	  \
+	pointer_for_input += strlen(COMMAND_STR) + ONE;	  \
+	FUNCTION;														              \
+	return;															              \
 }
 
 operation_command("derivate last"    , command_derivative("derivate last "    , "last"  , Counter))
